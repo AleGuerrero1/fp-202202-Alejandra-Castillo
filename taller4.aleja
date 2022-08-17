@@ -1,0 +1,22 @@
+Algoritmo tallerPlata
+	Definir contador como entero 
+	definir acumulado, dinero Como Entero
+	
+	contador <-0
+	acumulado <-0
+	
+	Repetir
+		Escribir "Cuanto dinero vas a meter"
+		Leer dinero
+		
+		Si dinero > 0 Entonces 
+			acumulado <- acumulado + dinero
+			contador <- contador + 1
+		FinSi
+	Hasta Que dinero <= 0
+	
+	Definir suma como entero 
+	suma <- acumulado 
+	Escribir "Tu recaudo es ", suma
+	Escribir "Se recibieron ", contador, " Billetes"
+FinAlgoritmo
