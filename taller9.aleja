@@ -1,0 +1,89 @@
+Funcion rta <- HMayor(año1, mes1, dia1, año2, mes2, dia2)
+	rta <- 1
+	si año2<año1 entonces
+		rta <-2
+	sino 
+		si año2 =año1 entonces
+			si mes2<mes1 entonces
+				rta <- 2
+			sino 
+				si mes2=mes1 y dia2 <dia1 entonces
+					rta<-2
+				FinSi
+			FinSi
+		FinSi
+	FinSi
+FinFuncion
+
+Funcion respuesta<- OD(mes)
+	Segun mes Hacer
+		1, 3, 5, 7, 8, 10, 12:
+			respuesta <-31
+		4, 6, 9, 11:
+			respuesta <-30
+		2:
+			Si A % 4=0 Entonces
+				respuesta <-29
+			SiNo
+				respuesta<-28
+			FinSi
+	FinSegun	
+FinFuncion
+
+Funcion resultado <-calcular_edad(A, M, D, AN, MN, DN)
+	resultado <- A-AN
+	Si MN>M Entonces
+		resultado <- resultado -1
+	SiNo
+		si MN=M Entonces
+			si DN >D Entonces
+				resultado <- resultado -1
+			FinSi
+		FinSi
+	FinSi
+FinFuncion
+
+	Funcion respuesta<- validarDato(etiqueta, minimo, maximo)
+		Escribir etiqueta
+		leer respuesta
+		
+		Mientras  respuesta<minimo o respuesta>maximo Hacer
+			Escribir " Valor incorrecto"
+			Escribir estiqueta
+			leer respuesta
+		FinMientras
+FinFuncion
+
+Algoritmo taller9
+	definir A, M, D, i Como Entero
+	DEFINIR AN, MN, DN, edad como entero
+	dimension MN(3)
+	dimension DN(3)
+	dimension AN(3)
+	dimension edad(3)
+	
+	Escribir "Año de referencia: "
+	Leer A
+	M<-validarDato("Mes de referencia: ", 1, 12)
+	D<-validarDato("Día de refencia: ", 1, 31)
+	
+	para i<-0 hasta 2 Hacer
+		escribir "PERSONA NÚMERO", (i+1)
+		Escribir "Año de nacimiento: "
+		leer AN[i]
+		MN[i]<-validarDato("Mes de nacimiento", 1, 12)
+		DN[i]<-validarDato("Día de nacimiento: ", 1, 31)
+		edad[i]<-calcular_edad(A, M, D, AN[i], MN[i], DN[i])
+		escribir "Edad: ", edad[i]
+	FinPara
+	
+	si HMayor(AN[0], MN[0], DN[0], AN[1], MN[1], DN[1])=1 y HMayor(AN[0], MN[0], DN[0], AN[2], MN[2], DN[2])=1 Entonces
+		Escribir "Nació primero la persona: ", 1
+		si HMayor(AN[1], MN[1], DN[1], AN[2], MN[2], DN[2])=2 Entonces
+			Escribir "Nació primero la persona: ", 2
+		FinSi
+	sino 
+		escribir "Nació primero la persona:", 3
+	FinSi
+	
+FinAlgoritmo
